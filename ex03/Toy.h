@@ -25,6 +25,7 @@ public:
   std::string getAscii() const;
 
   Toy& operator=(Toy const& other);
+  virtual void speak(std::string const& statement);
 
  private:
   ToyType _type;
