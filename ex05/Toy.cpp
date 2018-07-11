@@ -1,6 +1,6 @@
 #include "Toy.h"
 
-Toy::Toy() : _type(BASIC_TOY), _name("toy"), _data(), _err(Error::UNKNOWN)
+Toy::Toy() : _err(Error::UNKNOWN), _type(BASIC_TOY), _name("toy"), _data()
 {
 }
 
@@ -41,10 +41,11 @@ void Toy::setName(std::string const& name)
 
 bool Toy::setAscii(std::string const& filename)
 {
-  bool ret = _data.getPictureFromFile(filename);
+  bool			ret = _data.getPictureFromFile(filename);
+
   if (ret == false)
     _err = Error::PICTURE;
-  return ret;
+  return (ret);
 }
 
 std::string Toy::getAscii() const
@@ -54,7 +55,13 @@ std::string Toy::getAscii() const
 
 void Toy::speak(std::string const& statement)
 {
-  std::cout << this->getName() << " \"" << statement << "\"" << std::endl;
+  std::cout << _name << " \"" << statement << "\"" << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, Toy const& toy)
+{
+  os << toy.getName() << std::endl << toy.getAscii() << std::endl;
+  return os;
 }
 
 bool Toy::speak_es(std::string const& statement)
@@ -70,9 +77,20 @@ Toy& Toy::operator<<(std::string const& pic)
   return *this;
 }
 
-Toy::Error::Error() : type(Error::UNKNOWN){}
+Toy::Error::Error() : type(Error::UNKNOWN)
+{
+}
 
-Toy::Error::~Error(){}
+Toy::Error::~Error()
+{
+}
+
+Toy::Error Toy::getLastError()
+{
+  Error err;
+  err.type = _err;
+  return err;
+}
 
 std::string const Toy::Error::what() const
 {
@@ -91,19 +109,4 @@ std::string const Toy::Error::where() const
     return ("speak_es");
   return "";  
 }
-
-Toy::Error Toy::getLastError()
-{
-  Error err;
-  err.type = _err;
-  return err;
-}
-
-std::ostream& operator<<(std::ostream& os, Toy const& toy)
-{
-  os << toy.getName() << std::endl << toy.getAscii() << std::endl;
-  return os;
-}
-
-
 
