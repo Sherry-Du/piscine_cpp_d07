@@ -7,7 +7,6 @@ Picture::Picture() : data("")
 Picture::Picture(const std::string& file)
 {
   std::ifstream	source(file.c_str());
-  
   if (!source)
     data = "ERROR";
   else
@@ -22,7 +21,6 @@ Picture::Picture(Picture const& other)
 Picture& Picture::operator=(Picture const& other)
 {
   data = other.data;
-  
   return *this;
 }
 

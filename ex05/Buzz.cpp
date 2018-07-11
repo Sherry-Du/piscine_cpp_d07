@@ -14,11 +14,11 @@ Buzz::~Buzz()
 
 void Buzz::speak(std::string const& statement)
 {
-  std::cout << "BUZZ: " <<  this->getName() << " \"" << statement << "\"" << std::endl;
+  std::cout << "BUZZ: " << this->getName() << " \"" << statement << "\"" << std::endl;
 }
 
 bool Buzz::speak_es(std::string const& statement)
 {
-  std::cout << "BUZZ: " <<  this->getName() <<  " senorita \"" << statement << "\" senorita" << std::endl;
+  std::cout << "BUZZ: " <<  getName() <<  " senorita \"" << statement << "\" senorita" << std::endl;
   return true;
 }
