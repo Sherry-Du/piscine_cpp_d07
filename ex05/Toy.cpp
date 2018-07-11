@@ -41,7 +41,10 @@ void Toy::setName(std::string const& name)
 
 bool Toy::setAscii(std::string const& filename)
 {
-  return (_data.getPictureFromFile(filename));
+  bool ret = _data.getPictureFromFile(filename);
+  if (ret == false)
+    _err = Error::PICTURE;
+  return ret;
 }
 
 std::string Toy::getAscii() const
