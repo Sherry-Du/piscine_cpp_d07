@@ -14,20 +14,6 @@ public:
     BUZZ,
     WOODY
   };
-  Toy();
-  Toy(Toy const& other);
-  Toy(ToyType, std::string name, std::string file);
-  ~Toy();
-  ToyType getType() const;
-  std::string getName() const;
-  void setName(std::string const& name);
-  bool setAscii(std::string const& file);
-  std::string getAscii() const;
-
-  Toy& operator=(Toy const& other);
-  Toy& operator<<(std::string const& pic);
-  virtual void speak(std::string const& statement);
-  virtual bool speak_es(std::string const& statement);
 
   class Error
   {
@@ -44,6 +30,21 @@ public:
       std::string const where() const;
       ErrorType type;
   };
+
+  Toy();
+  Toy(Toy const& other);
+  Toy(ToyType, std::string name, std::string file);
+  ~Toy();
+  ToyType getType() const;
+  std::string getName() const;
+  void setName(std::string const& name);
+  bool setAscii(std::string const& file);
+  std::string getAscii() const;
+
+  Toy& operator=(Toy const& other);
+  Toy& operator<<(std::string const& pic);
+  virtual void speak(std::string const& statement);
+  virtual bool speak_es(std::string const& statement);
 
   Error getLastError();
 

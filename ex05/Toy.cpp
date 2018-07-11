@@ -1,6 +1,6 @@
 #include "Toy.h"
 
-Toy::Toy() : _err(Error::UNKNOWN), _type(BASIC_TOY), _name("toy"), _data()
+Toy::Toy() : _type(BASIC_TOY), _name("toy"), _data(), _err(Error::UNKNOWN)
 {
 }
 
